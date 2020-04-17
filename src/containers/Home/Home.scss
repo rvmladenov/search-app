@@ -1,0 +1,16 @@
+.Home {
+    height: 100vh;
+    padding: 5rem;
+}
+
+.FormControls {
+    > div {
+
+        &:first-child {
+            margin-right: 2rem;
+        }
+
+        width: 30rem;
+        display: inline-block;
+    }
+}
