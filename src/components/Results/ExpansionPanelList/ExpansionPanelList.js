@@ -20,8 +20,8 @@ export default function ExpansionPanelList() {
 
     return (
         <div className={classes.root}>
-            <Grid container>
-                <Grid item xs={12} spacing={3}>
+            <Grid container  spacing={3}>
+                <Grid item xs={12}>
                     <ExpansionPanel>
                         <ExpansionPanelSummary
                         expandIcon={<ExpandMoreIcon />}
@@ -46,7 +46,7 @@ export default function ExpansionPanelList() {
                     </ExpansionPanel>
                 </Grid>
 
-                <Grid item xs={12} spacing={3}>
+                <Grid item xs={12}>
                     <ExpansionPanel>
                         <ExpansionPanelSummary
                         expandIcon={<ExpandMoreIcon />}

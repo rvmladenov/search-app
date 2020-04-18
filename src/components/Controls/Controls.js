@@ -17,21 +17,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Controls() {
+export default function Controls(props) {
   const classes = useStyles();
+
+  // TODO: Modify the following using just 1 function with switch cases
+  const onSelectTemplates = (obj) => {
+    // TODO:
+    console.log(obj);
+  };
+  
+  const onSelectQuestions = (obj) => {
+    // TODO:
+    console.log(obj);
+  };
 
   return (
     <div className={classes.root}>
         <Grid container spacing={1}>
             <Grid item xs={6} sm={4}>
                 <Paper className={classes.paper}>
-                    <ThemeSearch />
+                    <ThemeSearch templates={props.templates} onSelect={onSelectTemplates} />
                 </Paper>
             </Grid>
 
             <Grid item xs={6} sm={4}>
                 <Paper className={classes.paper}>
-                    <QuestionSearch />
+                    <QuestionSearch questions={props.questions} onSelect={onSelectQuestions} />
                 </Paper>
             </Grid>
 
