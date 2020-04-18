@@ -3,8 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
-import MyButton from '../Button/Button';
-
 import ThemeSearch from '../ThemeSearch/ThemeSearch';
 import QuestionSearch from '../QuestionSearch/QuestionSearch';
 
@@ -24,22 +22,19 @@ export default function Controls() {
 
   return (
     <div className={classes.root}>
-        <Grid container spacing={3}>
-            <Grid item xs={6} sm={3}>
+        <Grid container spacing={1}>
+            <Grid item xs={6} sm={4}>
                 <Paper className={classes.paper}>
                     <ThemeSearch />
                 </Paper>
             </Grid>
 
-            <Grid item xs={6} sm={3}>
+            <Grid item xs={6} sm={4}>
                 <Paper className={classes.paper}>
                     <QuestionSearch />
                 </Paper>
             </Grid>
 
-            <Grid item xs={6} sm={3}>
-                <MyButton />
-            </Grid>
         </Grid>
     </div>
   );
