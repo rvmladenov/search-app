@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
-import ThemeSearch from '../ThemeSearch/ThemeSearch';
+import ThemeSearch from '../TemplateSearch/TemplateSearch';
 import QuestionSearch from '../QuestionSearch/QuestionSearch';
 
 const useStyles = makeStyles((theme) => ({

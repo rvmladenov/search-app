@@ -3,17 +3,16 @@ import Chip from '@material-ui/core/Chip';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
-const QuestionSearch = (props) => {
-  const questions = props.questions || [];
-
-    // TODO: temp
-  //   const questions = [{name: "multipleListSelection", id: 0}];
+const ThemeSearch = (props) => {
+  const templates = props.templates || [];
+  // TODO: temp
+//   const templates = [{name: "nx_liability", id: 0}];
 
   return (
     <Autocomplete
         multiple
-        id="questions-search-autocomplete"
-        options={questions}
+        id="theme-search-autocomplete"
+        options={templates}
         getOptionLabel={(option) => option.name}
         renderTags={(value, getTagProps) =>
         value.map((option, index) => (
@@ -21,13 +20,13 @@ const QuestionSearch = (props) => {
         ))
         }
         onChange={(event, newValue) => {
-            props.onSelect('questions', newValue);
+            props.onSelect('templates', newValue);
         }}
         renderInput={(params) => (
-        <TextField {...params} label="Questions List" variant="outlined" />
+        <TextField {...params} label="Themes List" variant="outlined" />
         )}
     />
     );
 }
 
-export default QuestionSearch;
+export default ThemeSearch;

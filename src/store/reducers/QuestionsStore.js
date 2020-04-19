@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions/QuestionsActions';
 
 const initialState = {
-    questions: {} // { [id: any]: { name, [questions: string[]], createdAt: date } }
+    questions: [] // [{ [id: any]: { name: string } }]
 };
 
 const reducer = ( state = initialState, action ) => {
@@ -9,7 +9,8 @@ const reducer = ( state = initialState, action ) => {
         case actionTypes.ADD_QUESTIONS:
             // TODO
             return {
-                ...state
+                ...state,
+                questions: action.value
             };
         default:
             return state;
