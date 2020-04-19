@@ -7,15 +7,16 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, compose, combineReducers, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import TemplateStore from './store/TemplatesStore/store/TemplatesStore';
-import QuestionsStore from './store/QuestionsStore/store/QuestionsStore';
+import TemplateStore from './store/reducers/TemplatesStore';
+import QuestionsStore from './store/reducers/QuestionsStore';
+import modifyDataBeforeStore from './store/middleware/ModifyDataBeforeStore';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({ 
   templates: TemplateStore,
   questions: QuestionsStore });
 
-const store = createStore(rootReducer, composeEnhancers( applyMiddleware(thunk) ));
+const store = createStore(rootReducer, composeEnhancers( applyMiddleware(modifyDataBeforeStore, thunk) ));
 
 ReactDOM.render(
     <Provider store={store}>
