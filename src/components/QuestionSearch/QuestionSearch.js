@@ -13,16 +13,17 @@ const QuestionSearch = (props) => {
     hasAll = true;
   }
 
-  onSelect = (newValue) => {
+  const onSelect = (newValue) => {
     // If "Select All" was selected - insert all questions 
     if (newValue && newValue.length > 0) {
         const hasSelectAll = newValue.filter(question => {
-            return question.id == selectAllId;
+            return question.id === selectAllId;
         }).length > 0;
 
         if (hasSelectAll) {
             newValue = [...props.questions];
         }
+        // TODO: Continue here ----------------
     }
  
       props.onSelect(newValue);
