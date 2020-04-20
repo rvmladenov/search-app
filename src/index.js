@@ -9,12 +9,14 @@ import { applyMiddleware, compose, combineReducers, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import TemplateStore from './store/reducers/TemplatesStore';
 import QuestionsStore from './store/reducers/QuestionsStore';
+import ResultStore from './store/reducers/ResultsStore';
 import modifyDataBeforeStore from './store/middleware/ModifyDataBeforeStore';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({ 
   templates: TemplateStore,
-  questions: QuestionsStore });
+  questions: QuestionsStore,
+  results: ResultStore });
 
 const store = createStore(rootReducer, composeEnhancers( applyMiddleware(modifyDataBeforeStore, thunk) ));
 

@@ -20,10 +20,10 @@ const ThemeSearch = (props) => {
         ))
         }
         onChange={(event, newValue) => {
-            props.onSelect('templates', newValue);
+            props.onSelect(newValue);
         }}
         renderInput={(params) => (
-        <TextField {...params} label="Themes List" variant="outlined" />
+          <TextField {...params} label="Themes List" variant="outlined" />
         )}
     />
     );

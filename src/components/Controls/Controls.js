@@ -3,8 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
-import ThemeSearch from '../TemplateSearch/TemplateSearch';
+import TemplateSearch from '../TemplateSearch/TemplateSearch';
 import QuestionSearch from '../QuestionSearch/QuestionSearch';
+import CONTROL_TYPE from './ControlsConstants';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,15 +21,20 @@ const useStyles = makeStyles((theme) => ({
 export default function Controls(props) {
   const classes = useStyles();
 
-  // TODO: Modify the following using just 1 function with switch cases
-  const onSelectTemplates = (obj) => {
-    // TODO:
-    console.log(obj);
-  };
-  
-  const onSelectQuestions = (obj) => {
-    // TODO:
-    console.log(obj);
+  const onSelect = (type, answer) => {
+    switch (type) {
+      case CONTROL_TYPE.TEMPLATE:
+        props.onTemplatesSelect(answer)
+        break;
+        
+        case CONTROL_TYPE.QUESTION:
+          props.onQuestionsSelect(answer);
+      break;
+    
+      default:
+        // TODO: Should throw an error
+        break;
+    }
   };
 
   return (
@@ -36,13 +42,17 @@ export default function Controls(props) {
         <Grid container spacing={1}>
             <Grid item xs={6} sm={4}>
                 <Paper className={classes.paper}>
-                    <ThemeSearch templates={props.templates} onSelect={onSelectTemplates} />
+                    <TemplateSearch templates={props.templates} onSelect={(answer) => {
+                      onSelect(CONTROL_TYPE.TEMPLATE, answer)
+                      }} />
                 </Paper>
             </Grid>
 
             <Grid item xs={6} sm={4}>
                 <Paper className={classes.paper}>
-                    <QuestionSearch questions={props.questions} onSelect={onSelectQuestions} />
+                    <QuestionSearch questions={props.questions} onSelect={(answer) => {
+                      onSelect(CONTROL_TYPE.QUESTION, answer)
+                      }} />
                 </Paper>
             </Grid>
 

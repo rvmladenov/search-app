@@ -3,11 +3,30 @@ import Chip from '@material-ui/core/Chip';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
+let hasAll = false;
+const selectAllId = -1;
+
 const QuestionSearch = (props) => {
   const questions = props.questions || [];
+  if (questions.length > 0 && !hasAll) {
+    questions.unshift({id: selectAllId, name: 'Select All'});
+    hasAll = true;
+  }
 
-    // TODO: temp
-  //   const questions = [{name: "multipleListSelection", id: 0}];
+  onSelect = (newValue) => {
+    // If "Select All" was selected - insert all questions 
+    if (newValue && newValue.length > 0) {
+        const hasSelectAll = newValue.filter(question => {
+            return question.id == selectAllId;
+        }).length > 0;
+
+        if (hasSelectAll) {
+            newValue = [...props.questions];
+        }
+    }
+ 
+      props.onSelect(newValue);
+  }
 
   return (
     <Autocomplete
@@ -21,10 +40,10 @@ const QuestionSearch = (props) => {
         ))
         }
         onChange={(event, newValue) => {
-            props.onSelect('questions', newValue);
+            onSelect(newValue);
         }}
         renderInput={(params) => (
-        <TextField {...params} label="Questions List" variant="outlined" />
+            <TextField {...params} label="Questions List" variant="outlined" />
         )}
     />
     );

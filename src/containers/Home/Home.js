@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import * as questionActions from '../../store/actions/QuestionsActions';
 import * as templateActions from '../../store/actions/TemplateActions';
+import * as ResultActions from '../../store/actions/ResultActions';
 
 import api from '../../core/api';
 import Results from '../../components/Results/Results';
@@ -10,7 +11,6 @@ import Controls from '../../components/Controls/Controls';
 import './Home.scss';
 
 class Home extends Component {
-
     componentDidMount() {
         api.getQuestions()
             .then(questionsData => {
@@ -21,18 +21,22 @@ class Home extends Component {
                     this.props.onAddTemplates(templatesData.data);
                 })
                 .catch(errorTemplates => {
-                    // TODO:
                     console.log(errorTemplates);
                 });
             })
             .catch(errorQuestions => {
-                // TODO:
                 console.log(errorQuestions);
             });
     }
 
-    onSelection = selection => {
-        console.log(selection);
+    onQuestionsSelect = questions => {
+        // TODO: 
+        console.log(questions);
+    }
+
+    onTemplatesSelect = templates => {
+        // TODO:
+        console.log(templates);
     }
 
     render () {
@@ -42,11 +46,12 @@ class Home extends Component {
                     <Controls
                         questions={this.props.questions}
                         templates={this.props.templates}
-                        onSelection={this.onSelection}/>
+                        onQuestionsSelect={this.onQuestionsSelect}
+                        onTemplatesSelect={this.onTemplatesSelect}/>
                 </div> 
 
                 <div className="Results">
-                    <Results />
+                    <Results templates={this.props.results} />
                 </div>
             </div>
         );
@@ -56,13 +61,15 @@ class Home extends Component {
 const mapStateToProps = state => {
     return {
         templates: state.templates.templates,
-        questions: state.questions.questions
+        questions: state.questions.questions,
+        results: state.results.templates
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         onAddQuestions: (questions) => dispatch(questionActions.addQuestions(questions)),
+        onAddResults  : (templates) => dispatch(ResultActions.addResultTemplates(templates)),
         onAddTemplates: (templates) => dispatch(templateActions.addTemplates(templates))
     }
 };
