@@ -1,7 +1,8 @@
 import * as actionTypes from '../actions/TemplateActions';
 
 const initialState = {
-    templates: [] // [{ [id: any]: { name, [questions: string[]], createdAt: date } }]
+    templates: [], // [{ [id: any]: { name, [questions: string[]], createdAt: date } }]
+    selectedTemplates: [], // [{ [id: any]: { name, [questions: string[]], createdAt: date } }]
 };
 
 const reducer = ( state = initialState, action ) => {
@@ -11,10 +12,10 @@ const reducer = ( state = initialState, action ) => {
                 ...state,
                 templates: action.value
             };
-        case actionTypes.REMOVE_TEMPLATE:
-            // TODO:
+        case actionTypes.SET_SELECTED_TEMPLATES:
             return {
-                ...state
+                ...state,
+                selectedTemplates: action.value
             };
         default:
             return state;

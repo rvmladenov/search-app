@@ -33,6 +33,7 @@ export default function Controls(props) {
     
       default:
         // TODO: Should throw an error
+        console.log("incorrect type of an answer");
         break;
     }
   };
@@ -42,16 +43,20 @@ export default function Controls(props) {
         <Grid container spacing={1}>
             <Grid item xs={6} sm={4}>
                 <Paper className={classes.paper}>
-                    <TemplateSearch templates={props.templates} onSelect={(answer) => {
-                      onSelect(CONTROL_TYPE.TEMPLATE, answer)
+                    <TemplateSearch templates={ { 
+                        templates: props.templates.templates,
+                        selectedTemplates: props.templates.selectedTemplates,
+                        questionIds: props.questions.questions.map(question => question.id)
+                      } } onSelect={(answer) => {
+                        onSelect(CONTROL_TYPE.TEMPLATE, answer)
                       }} />
                 </Paper>
             </Grid>
 
             <Grid item xs={6} sm={4}>
                 <Paper className={classes.paper}>
-                    <QuestionSearch questions={props.questions} onSelect={(answer) => {
-                      onSelect(CONTROL_TYPE.QUESTION, answer)
+                    <QuestionSearch questions={ { questions: props.questions.questions, selectedQuestions: props.questions.selectedQuestions } } onSelect={(answer) => {
+                        onSelect(CONTROL_TYPE.QUESTION, answer)
                       }} />
                 </Paper>
             </Grid>

@@ -9,7 +9,7 @@ return next => {
             case ADD_QUESTIONS:
             case ADD_TEMPLATES:
                 const value = action.value.map(prop => {
-                    return JSON.parse(prop);
+                    return prop;
                 })
                 action.value = [...value];
             break;

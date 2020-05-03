@@ -7,7 +7,8 @@ let hasAll = false;
 const selectAllId = -1;
 
 const QuestionSearch = (props) => {
-  const questions = props.questions || [];
+  const questions = props.questions.questions || [];
+  const selectedQuestions = props.questions.selectedQuestions
   if (questions.length > 0 && !hasAll) {
     questions.unshift({id: selectAllId, name: 'Select All'});
     hasAll = true;
@@ -23,7 +24,6 @@ const QuestionSearch = (props) => {
         if (hasSelectAll) {
             newValue = [...props.questions];
         }
-        // TODO: Continue here ----------------
     }
  
       props.onSelect(newValue);
