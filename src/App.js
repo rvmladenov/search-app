@@ -23,12 +23,19 @@ import './App.scss';
 
 import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import Home from './containers/Home/Home';
+import Header from './components/Header/Header';
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+  },
+  header: {
+    paddingTop: '5rem',
+    flexGrow: 1,
+    padding: theme.spacing(3),
+    paddingBottom: 0
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -85,7 +92,12 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
+    paddingTop: 0
   },
+  button: {
+    color: 'inherit',
+    textDecoration: 'none'
+  }
 }));
 
 export default function MiniDrawer() {
@@ -156,7 +168,7 @@ export default function MiniDrawer() {
         <Divider />
         <List>
           {['Home'].map((text, index) => (
-            <NavLink key="homeLink" exact to="/home">
+            <NavLink className={classes.button} key="homeLink" exact to="/home">
               <ListItem button key={text}>
                   <ListItemIcon><FingerprintIcon /></ListItemIcon>
                   <ListItemText primary={text} />
@@ -167,14 +179,25 @@ export default function MiniDrawer() {
         <Divider />
 
       </Drawer>
-      <main className={classes.content}>
-        <div className="container">
-          <Switch>
-              <Route path="/home" component={Home} />
-              <Redirect exact from="/" to="/home" />
-          </Switch>
-        </div>
-      </main>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <header className={classes.header}>
+            <Header />
+          </header>
+        </Grid>
+        <Grid item xs={12}>
+          <header >
+            <main className={classes.content}>
+              <div>
+                <Switch>
+                    <Route path="/home" component={Home} />
+                    <Redirect exact from="/" to="/home" />
+                </Switch>
+              </div>
+            </main>
+          </header>
+        </Grid>
+      </Grid>
     </div>
   );
 }

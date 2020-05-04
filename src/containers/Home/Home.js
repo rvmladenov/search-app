@@ -58,6 +58,7 @@ class Home extends Component {
         // TODO:
         console.log(templates);
 
+        this.props.onAddResults(templates);
         // TODO: взимам всичките question ids от темплейта и ги слагам
     }
 
@@ -77,7 +78,7 @@ class Home extends Component {
                 </div> 
 
                 <div className="Results">
-                    <Results templates={this.props.results} />
+                    <Results resultTemplates={this.props.results} />
                 </div>
             </div>
         );

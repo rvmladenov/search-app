@@ -6,14 +6,6 @@ import './TemplateSearch.scss';
 
 const ThemeSearch = (props) => {
   const templates = props.templates.templates || [];
-  const selectedTemplates = props.templates.selectedTemplates || [];
-  // TODO: temp
-//   const templates = [{name: "nx_liability", id: 0}];
-
-  // TODO: move that to a helper service. It is been used in the Home.js as well
-  const checkExistance = (arr, target) => {
-    return target.every(v => arr.includes(v))
-  };
 
   return (
     <Autocomplete
