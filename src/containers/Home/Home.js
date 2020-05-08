@@ -38,7 +38,7 @@ class Home extends Component {
             });
     }
 
-    // TODO: move that to a helper service. It is been used in the TemplateSearch.js as well
+    // TODO: move that to a helper service. It is been used in TemplateSearch.js and ExpansionPanel.js to determine if the template has all selected questions
     checkExistance = (arr, target) => {
         return target.every(v => arr.includes(v))
     };
@@ -51,16 +51,19 @@ class Home extends Component {
 
         this.setState({ filteredTemplates: filteredTemplates });
 
-        this.props.onSetSelectedQuestions(questions);
-    }
+        // this.props.onSetSelectedQuestions(questions);
+    };
 
     onTemplatesSelect = templates => {
-        // TODO:
-        console.log(templates);
+
+
 
         this.props.onAddResults(templates);
-        // TODO: взимам всичките question ids от темплейта и ги слагам
-    }
+    };
+
+    updateTemplatesState = () => {
+
+    };
 
     crossFilterData = () => {
         // TODO:

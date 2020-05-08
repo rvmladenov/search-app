@@ -15,8 +15,6 @@ const ThemeSearch = (props) => {
         getOptionLabel={(option) => option.name}
         renderTags={(value, getTagProps) =>
         value.map((option, index) => {
-          console.log('props', props);
-
           const filteredTemplatesIds = props.templates.templates.map(template => template.id);
 
             const isTemplateInTheList = filteredTemplatesIds.indexOf(option.id) >= 0;

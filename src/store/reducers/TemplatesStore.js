@@ -1,8 +1,8 @@
 import * as actionTypes from '../actions/TemplateActions';
 
 const initialState = {
-    templates: [], // [{ [id: any]: { name, [questions: string[]], createdAt: date } }]
-    selectedTemplates: [], // [{ [id: any]: { name, [questions: string[]], createdAt: date } }]
+    templates: [],
+    selectedTemplates: [],
 };
 
 const reducer = ( state = initialState, action ) => {
