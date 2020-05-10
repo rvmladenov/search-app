@@ -55,14 +55,24 @@ class Home extends Component {
     };
 
     onTemplatesSelect = templates => {
+        const resultTemplates = templates.map(template => {
 
+            const questions = template.questions.map(questionIndex => {
+                const foundedQuestion = this.props.questions.find(question => {
+                    return question.id === questionIndex;
+                });
 
+                return foundedQuestion ? foundedQuestion.name : '<undefined-question>';
+            })
+            
+            return {...template, questions: questions.join(', ')};
+        });
 
-        this.props.onAddResults(templates);
+        this.props.onAddResults(resultTemplates);
     };
 
     updateTemplatesState = () => {
-
+        // TODO:
     };
 
     crossFilterData = () => {

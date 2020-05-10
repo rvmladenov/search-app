@@ -10,7 +10,7 @@ const QuestionSearch = (props) => {
   const questions = props.questions.questions || [];
 //   const selectedQuestions = props.questions.selectedQuestions
   if (questions.length > 0 && !hasAll) {
-    questions.unshift({id: selectAllId, name: 'Select All'});
+    questions.unshift({id: selectAllId, name: 'All Questions'});
     hasAll = true;
   }
 
@@ -22,7 +22,7 @@ const QuestionSearch = (props) => {
         }).length > 0;
 
         if (hasSelectAll) {
-            newValue = [...props.questions];
+            newValue = [...props.questions.questions];
         }
     }
  

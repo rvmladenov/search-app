@@ -56,7 +56,7 @@ export default function TransitionAlerts() {
             </IconButton>
           }
         >
-          The templates which does not include the list of selected questions but have been selected are colored in red
+          The templates which doesnt hold ALL of the selected questions but have been selected are colored in red
         </Alert>
       </Collapse>
     </div>

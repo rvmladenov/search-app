@@ -22,7 +22,7 @@ const store = createStore(rootReducer, composeEnhancers( applyMiddleware(modifyD
 
 ReactDOM.render(
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename="/search-app">
         <App />
       </BrowserRouter>
     </Provider>,
