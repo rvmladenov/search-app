@@ -85,7 +85,7 @@ import React from 'react';
 import MaterialTable from 'material-table';
 
 export default function MaterialTableDemo(props) {
-  const [state, setState] = React.useState({
+  const [state] = React.useState({
     columns: [
       { 
         title: 'Template Name',
