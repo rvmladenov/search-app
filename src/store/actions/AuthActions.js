@@ -7,6 +7,13 @@ export const logIn = () => {
     };
 };
 
+export const logOut = () => {
+    return {
+        type: actionTypes.AUTH_LOGOUT,
+        value: true
+    };
+};
+
 export const authSuccess = (authData) => {
     return {
         type: actionTypes.AUTH_DATA,

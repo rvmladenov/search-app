@@ -14,7 +14,7 @@ class Login extends Component {
         };
 
         axios
-            .post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA-dDZ7NOOfB5THgPW8PTrrPbdYX9RUk88', authData)
+            .post('https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyA-dDZ7NOOfB5THgPW8PTrrPbdYX9RUk88', authData)
             .then(response => {
                 this.props.onLoginSuccess(response.data);
                 this.props.history.push('/home/search');

@@ -4,7 +4,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import PersonIcon from '@material-ui/icons/Person';
 
-export default function SimpleMenu(props) {
+const UserOptions = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -16,7 +16,7 @@ export default function SimpleMenu(props) {
   };
 
   const handleLogout = () => {
-    props.logOut();
+    props.logOut(); //// TODO: ------------- continue here. check if this works
   };
 
   return (
@@ -36,3 +36,11 @@ export default function SimpleMenu(props) {
     </div>
   );
 }
+
+const mapDispatchToProps = {
+  onLogout: () => {
+    dispatch(actions.logOut());
+  },
+};
+
+export default connect(null, mapDispatchToProps)(UserOptions);

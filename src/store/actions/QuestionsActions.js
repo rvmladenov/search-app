@@ -1,16 +1,15 @@
-export const ADD_QUESTIONS = 'ADD_QUESTIONS';
-export const SET_SELECTED_QUESTIONS = 'ADD_SELECTED_QUESTIONS';
+import * as actionTypes from './actionTypes';
 
 export const addQuestions = ( questions ) => {
     return {
-        type: ADD_QUESTIONS,
+        type: actionTypes.ADD_QUESTIONS,
         value: questions
     };
 };
 
 export const setSelectedQuestions = ( questions ) => {
     return {
-        type: SET_SELECTED_QUESTIONS,
+        type: actionTypes.SET_SELECTED_QUESTIONS,
         value: questions
     };
 };

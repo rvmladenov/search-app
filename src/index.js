@@ -12,9 +12,6 @@ import QuestionsStore from './store/reducers/QuestionsStore';
 import ResultStore from './store/reducers/ResultsStore';
 import AuthStore from './store/reducers/AuthStore';
 import modifyDataBeforeStore from './store/middleware/ModifyDataBeforeStore';
-import Login from './containers/Auth/Login';
-// import Home from './containers/Home/Home';
-import { Route, Switch, Redirect } from 'react-router-dom';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({ 
@@ -30,14 +27,7 @@ const store = createStore(rootReducer, composeEnhancers( applyMiddleware(modifyD
 ReactDOM.render(
     <Provider store={store}>
       <BrowserRouter>
-
-        <Switch>
-            <Route path="/home" component={App} />
-            <Route path="/login" component={Login} />
-            <Redirect exact from="/" to="/home" />
-        </Switch>
-
-        { store.getState().auth.authorized ? <Redirect to="/home" /> : <Redirect to="/login" /> }
+        <App />
       </BrowserRouter>
     </Provider>,
   document.getElementById('root')

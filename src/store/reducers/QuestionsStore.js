@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions/QuestionsActions';
+import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     questions: [], // [{ [id: any]: { name: string } }]

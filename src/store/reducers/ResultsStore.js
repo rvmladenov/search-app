@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions/ResultActions';
+import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     templates: []

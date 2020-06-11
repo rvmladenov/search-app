@@ -1,8 +1,8 @@
-export const ADD_RESULT_TEMPLATES = 'ADD_RESULT_TEMPLATE';
+import * as actionTypes from './actionTypes';
 
 export const addResultTemplates = ( templates ) => {
     return {
-        type: ADD_RESULT_TEMPLATES,
+        type: actionTypes.ADD_RESULT_TEMPLATES,
         value: templates
     };
 };
