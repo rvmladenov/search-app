@@ -41,7 +41,7 @@ export default function Controls(props) {
   return (
     <div className={classes.root}>
         <Grid container spacing={1}>
-            <Grid item xs={6} sm={4}>
+            <Grid item xs={12} sm={12} lg={6}>
                 <Paper className={classes.paper}>
                     <TemplateSearch templates={ { 
                         templates: props.templates.templates,
@@ -53,7 +53,7 @@ export default function Controls(props) {
                 </Paper>
             </Grid>
 
-            <Grid item xs={6} sm={4}>
+            <Grid item xs={12} sm={12} lg={6}>
                 <Paper className={classes.paper}>
                     <QuestionSearch questions={ { questions: props.questions.questions, selectedQuestions: props.questions.selectedQuestions } } onSelect={(answer) => {
                         onSelect(CONTROL_TYPE.QUESTION, answer)
