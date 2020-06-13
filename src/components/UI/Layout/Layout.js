@@ -136,7 +136,7 @@ export default function Layout(props) {
 
           <Grid direction="row" justify="flex-end" alignItems="center" container>
             <Grid item>
-                <UserOptions logOut={ () => {} } />
+                <UserOptions />
             </Grid>
         </Grid>
 

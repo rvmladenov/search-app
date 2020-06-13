@@ -9,7 +9,8 @@ const api = {
     getQuestions: () => {
         // TODO: Add a validation hadler
         const idToken = token();
-        return axios.get('/questions.json?auth=' + idToken)
+        return axios
+            .get('/questions.json?auth=' + idToken)
         // return axios.get('/questions.json', { 'headers': { 'Authorization': 'Bearer ' + idToken }})
     },
     getTemplates: () => {

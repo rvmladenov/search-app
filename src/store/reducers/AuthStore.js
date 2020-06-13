@@ -11,7 +11,12 @@ const reducer = ( state = initialState, action ) => {
         case actionTypes.AUTH_SUCCESS:
             return {
                 ...state,
-                authorized: action.value
+                authorized: true
+            };
+        case actionTypes.AUTH_LOGOUT:
+            return {
+                ...state,
+                authorized: false
             };
         case actionTypes.AUTH_DATA:
             return {

@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
+import {  } from 'react-router'
 
 const modifyDataBeforeStore = store => {
 return next => {
@@ -29,6 +30,12 @@ return next => {
             case actionTypes.AUTH_SUCCESS:
 
                 localStorage.setItem('loggedIn', action.value);
+            break;
+
+            case actionTypes.AUTH_LOGOUT:
+
+                localStorage.clear();
+                 // TODO: --- need to redirect after login
             break;
         
             default:

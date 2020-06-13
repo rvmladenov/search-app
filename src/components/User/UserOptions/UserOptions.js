@@ -2,7 +2,10 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import { connect } from 'react-redux';
 import PersonIcon from '@material-ui/icons/Person';
+import * as actions from '../../../store/actions/AuthActions';
+import { withRouter } from 'react-router-dom';
 
 const UserOptions = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -16,11 +19,12 @@ const UserOptions = (props) => {
   };
 
   const handleLogout = () => {
-    props.logOut(); //// TODO: ------------- continue here. check if this works
+    props.onLogout();
+    props.history.push('/login');
   };
 
   return (
-    <div>
+      <div>
       <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} >
         <PersonIcon />
       </Button>
@@ -37,10 +41,18 @@ const UserOptions = (props) => {
   );
 }
 
-const mapDispatchToProps = {
-  onLogout: () => {
-    dispatch(actions.logOut());
-  },
+const mapDispatchToProps = dispatch => {
+  return {
+    onLogout: () => {
+      dispatch(actions.logOut());
+    }
+  }
 };
 
-export default connect(null, mapDispatchToProps)(UserOptions);
+const mapStateToProps = state => {
+  return {
+      authorized: state.auth.authorized
+  }
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserOptions));

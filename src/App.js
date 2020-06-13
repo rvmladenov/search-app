@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import * as actions from './store/actions/AuthActions';
@@ -23,6 +23,11 @@ class App extends Component {
             this.props.onLoginSuccess(authData);
             this.setState( {isAuthorized: true } );
         }
+
+        // if (!this.props.authorized) {
+        //     console.log('this.props.history', this.props.history)
+        //     this.props.history.push('/login');
+        // }
     }
 
     render() {
@@ -50,4 +55,10 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(null, mapDispatchToProps)(App);
+const mapStateToProps = state => {
+    return {
+        authorized: state.auth.authorized
+    }
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

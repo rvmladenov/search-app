@@ -2,15 +2,13 @@ import * as actionTypes from './actionTypes';
 
 export const logIn = () => {
     return {
-        type: actionTypes.AUTH_SUCCESS,
-        value: true
+        type: actionTypes.AUTH_SUCCESS
     };
 };
 
 export const logOut = () => {
     return {
-        type: actionTypes.AUTH_LOGOUT,
-        value: true
+        type: actionTypes.AUTH_LOGOUT
     };
 };
 
