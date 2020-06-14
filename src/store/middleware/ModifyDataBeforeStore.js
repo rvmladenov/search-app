@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
-import {  } from 'react-router'
+import { toast } from 'react-toastify';
 
 const modifyDataBeforeStore = store => {
 return next => {
@@ -24,18 +24,18 @@ return next => {
 
         switch (action.type) {
             case actionTypes.AUTH_DATA:
-
                 localStorage.setItem('authData', JSON.stringify(action.value));
             break;
             case actionTypes.AUTH_SUCCESS:
-
                 localStorage.setItem('loggedIn', action.value);
             break;
 
             case actionTypes.AUTH_LOGOUT:
-
                 localStorage.clear();
-                 // TODO: --- need to redirect after login
+            break;
+
+            case actionTypes.AUTH_FAIL:
+                toast.error(action.value.message)
             break;
         
             default:

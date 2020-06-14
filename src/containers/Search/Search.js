@@ -11,32 +11,42 @@ import Controls from '../../components/Controls/Controls';
 import './Search.scss';
 
 class Search extends Component {
+    _isMounted = false;
+
     state = {
         filteredTemplates: [],
         filteredQuestions: []
     };
 
     componentDidMount() {
+        this._isMounted = true; 
         api.getQuestions()
             .then(questionsData => {
-                this.props.onAddQuestions(questionsData.data);
-                this.setState({ filteredQuestions: questionsData.data });
-                // this.props.filteredQuestions = questionsData.data;
-                
-                api.getTemplates()
-                .then(templatesData => {
-                    this.props.onAddTemplates(templatesData.data);
-                    this.setState({ filteredTemplates: templatesData.data });
-                    // this.props.filteredTemplates = templatesData.data;
-                })
-                .catch(errorTemplates => {
-                    console.log(errorTemplates);
-                });
+
+                if (this._isMounted) {
+                    this.props.onAddQuestions(questionsData.data);
+                    this.setState({ filteredQuestions: questionsData.data });
+                    // this.props.filteredQuestions = questionsData.data;
+                    
+                    api.getTemplates()
+                    .then(templatesData => {
+                        this.props.onAddTemplates(templatesData.data);
+                        this.setState({ filteredTemplates: templatesData.data });
+                        // this.props.filteredTemplates = templatesData.data;
+                    })
+                    .catch(errorTemplates => {
+                        console.log(errorTemplates);
+                    });
+                }
             })
             .catch(errorQuestions => {
                 console.log(errorQuestions);
             });
     }
+
+    componentWillUnmount() {
+        this._isMounted = false;
+      }
 
     // TODO: move that to a helper service. It is been used in TemplateSearch.js and ExpansionPanel.js to determine if the template has all selected questions
     checkExistance = (arr, target) => {

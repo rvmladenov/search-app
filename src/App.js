@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import * as actions from './store/actions/AuthActions';
 
 import Home from './containers/Home/Home';
@@ -10,9 +13,6 @@ import Login from './containers/Auth/Login';
 import './App.scss';
 
 class App extends Component {
-    state = {
-        isAuthorized: false
-    }
 
     componentDidMount() {
         console.log('componentDidMount');
@@ -21,23 +21,35 @@ class App extends Component {
 
         if (authData) {
             this.props.onLoginSuccess(authData);
-            this.setState( {isAuthorized: true } );
         }
 
-        // if (!this.props.authorized) {
-        //     console.log('this.props.history', this.props.history)
-        //     this.props.history.push('/login');
-        // }
+        // TODO: Need to figure out how to forbit the back button when not logged in
+        // window.addEventListener('popstate', (event) => {
+        //     if (!this.props.authorized) {
+        //         this.props.history.replace({ pathname: '/login' })
+        //     }
+        // });
+
     }
 
     render() {
         return (
             <div id="app">
+                <ToastContainer
+                    position="top-center"
+                    autoClose={7000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover />
                 <Switch>
                     <Route path="/home" component={Home} />
                     <Route path="/login" component={Login} />
                 </Switch>
-                { this.state.isAuthorized ? <Redirect to="/home/search" /> : <Redirect to="/login" /> }
+                { this.props.authorized ? <Redirect to="/home/search" /> : <Redirect to="/login" /> }
             </div>
         );
     }

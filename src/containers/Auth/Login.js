@@ -34,8 +34,8 @@ class Login extends Component {
 const mapDispatchToProps = dispatch => {
     return {
         onLoginSuccess: (authData) => {
-            dispatch(actions.logIn());
             dispatch(actions.authSuccess(authData));
+            dispatch(actions.logIn());
         },
         authFail: (error) => {
             dispatch(actions.authFail(error));

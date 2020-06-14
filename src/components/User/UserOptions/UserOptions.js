@@ -26,7 +26,7 @@ const UserOptions = (props) => {
   return (
       <div>
       <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} >
-        <PersonIcon />
+        <PersonIcon style={{ color: '#fff' }} />
       </Button>
       <Menu
         id="simple-menu"
