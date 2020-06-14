@@ -12,6 +12,7 @@ import QuestionsStore from './store/reducers/QuestionsStore';
 import ResultStore from './store/reducers/ResultsStore';
 import AuthStore from './store/reducers/AuthStore';
 import modifyDataBeforeStore from './store/middleware/ModifyDataBeforeStore';
+import { createBrowserHistory } from 'history';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({ 
@@ -37,3 +38,5 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.register();
+
+export const history = createBrowserHistory();

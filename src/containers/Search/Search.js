@@ -26,18 +26,16 @@ class Search extends Component {
                 if (this._isMounted) {
                     this.props.onAddQuestions(questionsData.data);
                     this.setState({ filteredQuestions: questionsData.data });
-                    // this.props.filteredQuestions = questionsData.data;
                     
                     api.getTemplates()
-                    .then(templatesData => {
-                        this.props.onAddTemplates(templatesData.data);
-                        this.setState({ filteredTemplates: templatesData.data });
-                        // this.props.filteredTemplates = templatesData.data;
-                    })
-                    .catch(errorTemplates => {
-                        console.log(errorTemplates);
-                    });
-                }
+                        .then(templatesData => {
+                            this.props.onAddTemplates(templatesData.data);
+                            this.setState({ filteredTemplates: templatesData.data });
+                        })
+                        .catch(errorTemplates => {
+                            console.log(errorTemplates);
+                        });
+                    }
             })
             .catch(errorQuestions => {
                 console.log(errorQuestions);
